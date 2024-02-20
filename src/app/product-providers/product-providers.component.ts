@@ -5,6 +5,9 @@ import { ProvidersService } from "../providers.service";
 import {RouterLink} from "@angular/router";
 import {CommonModule} from "@angular/common";
 
+import { Provider } from "../provider";
+import { Providers } from "../../assets/providers.json";
+
 @Component({
   selector: 'app-product-providers',
   standalone: true,
@@ -13,12 +16,12 @@ import {CommonModule} from "@angular/common";
   styleUrl: './product-providers.component.css'
 })
 export class ProductProvidersComponent implements OnInit{
-  providers!: Observable<{id: number, name: string, details: string}[]>;
+  providers!: Provider[];
 
-  constructor(private providerService: ProvidersService) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.providers = this.providerService.getProviders();
+    this.providers = Providers;
   }
 }
